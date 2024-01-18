@@ -1,0 +1,35 @@
+package com.torichet.personal.entity.database.transaction;
+
+import com.torichet.personal.entity.database.account.Account;
+import com.torichet.personal.entity.database.category.Category;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@Entity
+@Setter @Getter
+@AllArgsConstructor @NoArgsConstructor
+public class Transaction {
+  @Id
+  private Long id;
+  @ManyToOne
+  @JoinColumn(name = "account_id_from")
+  private Account accountFrom;
+  @ManyToOne
+  @JoinColumn(name = "account_id_to")
+  private Account accountTo;
+  @ManyToOne
+  @JoinColumn(name = "category_id")
+  private Category category;
+  private String description;
+  private BigDecimal amount;
+  private LocalDateTime createdAt;
+}

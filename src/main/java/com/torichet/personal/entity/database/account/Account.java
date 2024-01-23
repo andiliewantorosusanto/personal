@@ -1,5 +1,6 @@
 package com.torichet.personal.entity.database.account;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -15,8 +16,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor @NoArgsConstructor
 public class Account {
   @Id
+  @JsonProperty("id")
   private Long id;
+  @JsonProperty("name")
   private String name;
+  @JsonProperty("balance")
   private BigDecimal balance;
+  @JsonProperty("createdAt")
   private LocalDateTime createdAt;
 }
